@@ -49,10 +49,10 @@
     //send message to worker
     //worker needs to receive "type" and "imageData"
     worker.postMessage({'type':type, 'imageData':imageData});
-    this.onmessage = function(e) {
+    worker.onmessage = function(e) {
         toggleButtonsAbledness();
-        img = e.data;
-        if (img) return ctx.putImageData(imageData, 0, 0);
+        var img = e.data;
+        if (img) return ctx.putImageData(e.data, 0, 0);
     };
 
   };

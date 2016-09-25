@@ -13,15 +13,18 @@ this.onmessage = function(e) {
       g = imageData.data[i * 4 + 1];
       b = imageData.data[i * 4 + 2];
       a = imageData.data[i * 4 + 3];
+      //console.log(r + " " + g + " " + b + " " + a);
       pixel = manipulate(type, r, g, b, a);
       imageData.data[i * 4 + 0] = pixel[0];
       imageData.data[i * 4 + 1] = pixel[1];
       imageData.data[i * 4 + 2] = pixel[2];
       imageData.data[i * 4 + 3] = pixel[3];
+      //console.log(pixel[0]);
     }
     //send message from worker to main
-    this.postMessage(imageData);
+    postMessage(imageData);
   } catch (e) {
+      console.log("enter error");
     function ManipulationException(message) {
       this.name = "ManipulationException";
       this.message = message;
